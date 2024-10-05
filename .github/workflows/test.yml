@@ -1,0 +1,36 @@
+name: build
+
+on:
+  push:
+    branches:
+      - '*' 
+    tags-ignore:
+      - 'v*.*.*'
+
+jobs:
+  build_and_test:
+    name: Build and Test
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Setup Rust
+      uses: actions-rs/toolchain@v1
+      with:
+        toolchain: stable
+        profile: minimal
+        override: true
+        components: rustfmt, clippy
+
+    - name: Build Project
+      uses: actions-rs/cargo@v1
+      with:
+        command: build
+        args: --all-features 
+
+    - name: Run tests
+      uses: actions-rs/cargo@v1
+      with:
+        command: test
+        args: --all-features -- --nocapture
