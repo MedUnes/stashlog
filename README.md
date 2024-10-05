@@ -19,7 +19,6 @@ fn main() {
         logger.error_extra("Maximum login attemps reached", &json!({"user_id": user_id}).to_string());
 ```
 
-![ELK Logging Stack](elk.webp)
 
 ### An example of production case scenario
 
@@ -51,6 +50,8 @@ output.logstash:
 
 * [Logstash](https://www.elastic.co/logstash), if correctly configured, will index the incoming traffic to  [Elasticsearch](https://www.elastic.co/elasticsearch)
 * You can then use [Kibana](https://www.elastic.co/kibana) to search, filter and visualize your application's logs.
+
+![ELK Logging Stack](elk.webp)
 
 ### Credits
 

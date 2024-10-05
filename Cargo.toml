@@ -1,7 +1,10 @@
 [package]
 name = "stashlog"
-version = "0.1.0"
+version = "0.0.3"
 edition = "2021"
+description = "A minimalistic Rust library for Logstash Event format logging."
+license = "MIT" 
+readme = "README.md"
 
 [dev-dependencies]
 tempfile = "3.2"
