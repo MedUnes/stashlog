@@ -13,8 +13,8 @@ fn main() {
         let logger = stashlog::Logger {
             config: Config {
                 version: 1,
-                app_name: "myra-app".to_string(),
-                file_path: "/home/myra-app/logs/logstash.log".to_string(),
+                app_name: "my-app".to_string(),
+                file_path: "/home/my-app/logs/logstash.log".to_string(),
             },
         };
         logger.info("User Logged in");
