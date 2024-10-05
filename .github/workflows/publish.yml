@@ -1,9 +1,9 @@
-name: Publish to crates.io
+name: Release
 
 on:
   push:
     tags:
-      - 'v*.*.*'  # This triggers the workflow on push to tags like v1.0.0
+      - 'v*.*.*' 
 
 jobs:
   build:
@@ -13,7 +13,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
       with:
-        fetch-depth: 0  # Ensures history is available for Cargo's metadata
+        fetch-depth: 0 
 
     - name: Setup Rust
       uses: actions-rs/toolchain@v1
