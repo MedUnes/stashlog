@@ -148,6 +148,8 @@ where
 #[cfg(test)]
 mod tests {
     use super::*;
+    use serde_json::json;
+
     #[test]
 
     fn it_logs() {
@@ -159,6 +161,7 @@ mod tests {
             },
         };
         logger.info("test message");
-        logger.info_extra("test123", "{\"field\":\"yesss\"}")
+        logger.info_extra("test123", "{\"field\":\"yesss\"}");
+        logger.info_extra("message", &json!({"user_id": 1}).to_string());
     }
 }
