@@ -1,7 +1,9 @@
 # Rust StashLog
 
+A minimalistic Rust library for [Logstash Event](https://github.com/elastic/logstash/blob/main/logstash-core/src/main/java/org/logstash/Event.java) format logging.
+
+
 [![Release](https://github.com/MedUnes/stashlog/actions/workflows/publish.yml/badge.svg)](https://github.com/MedUnes/stashlog/actions/workflows/publish.yml) [![Build](https://github.com/MedUnes/stashlog/actions/workflows/test.yml/badge.svg)](https://github.com/MedUnes/stashlog/actions/workflows/test.yml)
- A minimalistic Rust library for [Logstash Event](https://github.com/elastic/logstash/blob/main/logstash-core/src/main/java/org/logstash/Event.java) format logging.
 
 ### Usage
 
