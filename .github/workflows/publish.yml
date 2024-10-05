@@ -1,27 +1,32 @@
+name: Publish to crates.io
+
 on:
-    push:
-      # Pattern matched against refs/tags
-      tags:        
-        - '*'           # Push events to every tag not containing /
-    workflow_dispatch:
-  
-  name: Publish
-  
-  jobs:
-    publish:
-      name: Publish
-      runs-on: ubuntu-latest
-      steps:
-        - name: Checkout sources
-          uses: actions/checkout@v2
-  
-        - name: Install stable toolchain
-          uses: actions-rs/toolchain@v1
-          with:
-            profile: minimal
-            toolchain: stable
-            override: true
-  
-        - run: cargo publish --token ${CRATES_TOKEN}
-          env:
-            CRATES_TOKEN: ${{ secrets.CRATES_TOKEN }}
+  push:
+    tags:
+      - 'v*.*.*'  # This triggers the workflow on push to tags like v1.0.0
+
+jobs:
+  build:
+    name: Publish Crate
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        fetch-depth: 0  # Ensures history is available for Cargo's metadata
+
+    - name: Setup Rust
+      uses: actions-rs/toolchain@v1
+      with:
+        toolchain: stable
+        profile: minimal
+        override: true
+
+    - name: Publish to crates.io
+      uses: actions-rs/cargo@v1
+      with:
+        command: publish
+        args: --token ${{ secrets.CRATES_TOKEN }}
+      env:
+        CARGO_TERM_COLOR: always
+
